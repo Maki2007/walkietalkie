@@ -9,7 +9,7 @@ radio.onReceivedNumber(function (receivedNumber) {
     }
     for (let j = 0; j <= NumberofSamples - 1; j++) {
         freq = Math.map(ADCValue[j], 0, 1023, 20, 20000)
-        music.playTone(freq, 10)
+        music.playTone(freq, sampling_period)
         speakerSprite.set(LedSpriteProperty.Y, Math.map(ADCValue[j], 0, 1023, 0, 4))
     }
     speakerSprite.set(LedSpriteProperty.Y, 0)
