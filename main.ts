@@ -15,11 +15,10 @@ radio.onReceivedNumber(function (receivedNumber) {
     speakerSprite.set(LedSpriteProperty.Y, 0)
 })
 function lowPassFilter (filterInput: number) {
-    if (filterInput == 0) {
+    if (lowPassFilterValue == 0) {
         return filterInput
     } else {
-        let alpha = 0
-        filteredValue = alpha * filterInput + (1 - lowPassFilterValue) * filteredValue
+        filteredValue = lowPassFilterValue * filterInput + (1 - lowPassFilterValue) * filteredValue
         return filteredValue
     }
 }
@@ -53,8 +52,8 @@ filter_sprite = game.createSprite(3, 0)
 radio.setGroup(2)
 radio.setTransmitPower(7)
 pins.setAudioPin(AnalogPin.P1)
-let sampleFreq = 44100
-NumberofSamples = 256
+let sampleFreq = 8000
+NumberofSamples = 128
 sampling_period = Math.round(1000000 * (1 / sampleFreq))
 lowPassFilterValue = 0
 basic.forever(function () {
